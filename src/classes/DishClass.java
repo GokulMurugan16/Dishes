@@ -1,6 +1,7 @@
 package classes;
 
 import java.util.Comparator;
+import java.util.Objects;
 
 public class DishClass implements Comparable<DishClass>, Comparator<DishClass> {
 
@@ -74,6 +75,33 @@ public class DishClass implements Comparable<DishClass>, Comparator<DishClass> {
 	public int compare(DishClass o1, DishClass o2) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(DishType, calories, name, vegetarian);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		DishClass other = (DishClass) obj;
+		return DishType == other.DishType && calories == other.calories && Objects.equals(name, other.name)
+				&& vegetarian == other.vegetarian;
+	}
+
+
+	@Override
+	public String toString() {
+		return "DishClass [name=" + name + ", vegetarian=" + vegetarian + ", calories=" + calories + ", DishType="
+				+ DishType + "]";
 	}
 	
 	

@@ -1,9 +1,58 @@
 package classes;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
 
 public class Test {
+	
+	public static List<DishClass> filterByCalories(List<DishClass> array,int calories) {
+		
+		ArrayList<DishClass> newList = new ArrayList<DishClass>();
+		
+		for (DishClass dishClass : array) {
+			
+			if(dishClass.getCalories()>calories) {
+				newList.add(dishClass);
+			}	
+		}
+		return newList;
+	}
+	
+	
+	public static List<DishClass> filterByMealType(List<DishClass> array) {
+		
+		ArrayList<DishClass> newList = new ArrayList<DishClass>();
+		
+		for (DishClass dishClass : array) {
+			
+			if(dishClass.isVegetarian() == true) {
+				newList.add(dishClass);
+			}	
+		}
+		return newList;
+	}
+	
+	
+	
+	public static List<DishClass> filterByMeatAndCalories(List<DishClass> array,int calories) {
+		
+		ArrayList<DishClass> newList = new ArrayList<DishClass>();
+		
+		for (DishClass dishClass : array) {
+			
+			if(dishClass.getCalories()>calories && dishClass.getDishType() == MealType.Meat) {
+				newList.add(dishClass);
+			}	
+		}
+		return newList;
+	}
+	
+	
 
+	
+	
 	public static void main(String[] args) {
 		
 		ArrayList<DishClass> Dishes = new ArrayList<DishClass>();
@@ -18,11 +67,13 @@ public class Test {
 		Dishes.add(new DishClass("Rice Puddin",true,200,MealType.Others));
 		Dishes.add(new DishClass("Milk Shake",true,150,MealType.Others));
 		
-		Collections.sort(Dishes);
+		//List<DishClass> sorted = filterByCalories(Dishes,300);
+		//List<DishClass> sorted = filterByMealType(Dishes);
 		
-		 for (DishClass dishes : Dishes) {
-			 
-			
+		List<DishClass> sorted = filterByMeatAndCalories(Dishes,300);
+		
+		Collections.sort(sorted);
+		 for (DishClass dishes : sorted) {
 			System.out.println("Name: " + dishes.getName());
 			if (dishes.vegetarian == true)
 			{
@@ -32,12 +83,9 @@ public class Test {
 			{
 				System.out.println("Vegetarian: False" );	
 			}
-			
 			System.out.println("Calories: " + dishes.getCalories());
 			System.out.println("Meal Type: " + dishes.getDishType());		
 			System.out.println("");
-			
-			
 		}
 
 	}
