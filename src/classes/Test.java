@@ -23,7 +23,19 @@ public class Test {
 		 for (DishClass dishes : Dishes) {
 			 
 			
-			System.out.println(dishes.getName());
+			System.out.println("Name: " + dishes.getName());
+			if (dishes.vegetarian == true)
+			{
+				System.out.println("Vegetarian: True" );	
+			}
+			else
+			{
+				System.out.println("Vegetarian: False" );	
+			}
+			
+			System.out.println("Calories: " + dishes.getCalories());
+			System.out.println("Meal Type: " + dishes.getDishType());		
+			System.out.println("");
 			
 			
 		}

@@ -1,6 +1,8 @@
 package classes;
 
-public class DishClass implements Comparable<DishClass> {
+import java.util.Comparator;
+
+public class DishClass implements Comparable<DishClass>, Comparator<DishClass> {
 
 	
 	String name;
@@ -65,6 +67,13 @@ public class DishClass implements Comparable<DishClass> {
 	@Override
 	public int compareTo(DishClass o) {
 		return this.name.compareTo(o.name);
+	}
+
+
+	@Override
+	public int compare(DishClass o1, DishClass o2) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 	
